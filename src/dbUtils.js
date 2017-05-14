@@ -6,22 +6,20 @@ var TYPES = require('tedious').TYPES;
 
 exports.TYPES = TYPES;
 
-exports.executeSql = function (request, rowCallback, requestCallback, errorCallback) {
+exports.executeSql = function (config, command, rowCallback, requestCallback, errorCallback) {
 
-	var config = {
-		userName: request.username,
-		password: request.password,
-		server: request.server,
+	var connection = new Connection({
+		userName: config.username,
+		password: config.password,
+		server: config.server,
 		options: {
-			database: request.database,
+			database: config.database,
 			connectTimeout: 30*1000,
 			requestTimeout: 30*1000
 		}
 		// If you're on Windows Azure, you will need this:
 		//options: {encrypt: true}
-	};
-
-	var connection = new Connection(config);
+	});
 
 	connection.on('connect', function (err) {
 		if (err) {
@@ -30,7 +28,7 @@ exports.executeSql = function (request, rowCallback, requestCallback, errorCallb
 			return;
 		}
 
-		var req = new Request(request.sql, function (err, rowCount) {
+		var req = new Request(command.sql, function (err, rowCount) {
 			if (err) {
 				errorCallback(err);
 				console.log('Request Failed:' + err);
@@ -40,10 +38,8 @@ exports.executeSql = function (request, rowCallback, requestCallback, errorCallb
 			connection.close();
 		});
 
-		if(request.parms){
-			R.forEach(p=>{
-				req.addParameter(p.name, p.type, p.value);
-			}, request.parms);
+		if(command.parms){
+            command.parms.forEach(p=>req.addParameter(p.name, p.type, p.value));
 		}
 
 		req.on('row', function (columns) {

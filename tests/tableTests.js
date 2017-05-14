@@ -1,5 +1,5 @@
 
-const config = require("../config.json")
+const config = require("../src/configReader.js")
 const dbTables = require("../src/tablesReader.js")
 
 
@@ -13,17 +13,19 @@ run();
 async function run(){
     console.log("Starting");
 
-    const tableSchema = await getTableSchema("ADM_Company_M");
+    const tableNames = await getTableNames("npdb");
+    console.log(tableNames);
+
+    const tableSchema = await getTableSchema("stinv", "ADM_Company_M");
     console.log(tableSchema);
 
     console.log("Finished");
 }
 
-async function getTableSchema(tableName){
-    return await dbTables.names({
-        server:config.server,
-        database:"stinv",
-        username:config.username,
-        password:config.password
-    });
+async function getTableSchema(dbName, tableName){
+    return await dbTables.table(config.databases[dbName], tableName);
+}
+
+async function getTableNames(dbName){
+    return await dbTables.names(config.databases[dbName]);
 }

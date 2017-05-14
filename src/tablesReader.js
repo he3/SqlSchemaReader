@@ -33,7 +33,7 @@ const emptyTables = dbRows => { return dbRows.map(emptyTable); };
 
 
 
-module.exports.names = function (request) {
+module.exports.names = function (config) {
     var resultMessage = {
         success: false,
         message: '',
@@ -47,12 +47,8 @@ module.exports.names = function (request) {
     var rows = [];
 
     return new Promise((res, rej) => {
-        dbUtils.executeSql({
-            username: request.username,
-            password: request.password,
-            server: request.server,
-            database: request.database,
-            sql: sql,
+        dbUtils.executeSql(config, {
+            sql: sql
         },
             columns => rows.push(columns),
             rowCount => {
@@ -68,15 +64,13 @@ module.exports.names = function (request) {
     });
 };
 
-module.exports.table = function (request) {
+module.exports.table = function (config, tableName) {
 
     var resultMessage = {
         success: false,
         message: '',
         function: null
     };
-
-    var tableName = req.params.name;
 
     var sql = `select table_name name,
                     column_name,
@@ -94,14 +88,10 @@ module.exports.table = function (request) {
     return new Promise((res, rej) => {
         var rows = [];
 
-        dbUtils.executeSql({
-            username: request.username,
-            password: request.password,
-            server: request.server,
-            database: request.database,
+        dbUtils.executeSql(config, {
             sql: sql,
             parms: [
-                { name: 'table_name', type: TYPES.VarChar, value: request.tableName }
+                { name: 'table_name', type: TYPES.VarChar, value: tableName }
             ]
         },
             columns => rows.push(columns),

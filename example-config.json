@@ -1,5 +1,16 @@
 {
-    "username":"",
-    "password":"",
-    "server":""
+    "databases":{
+        "npdb":{
+            "server":"",
+            "database": "npdb",
+            "username":"",
+            "password":""
+        },
+        "stinv":{
+            "server":"",
+            "database": "stinv",
+            "username":"",
+            "password":""
+        }
+    }
 }
