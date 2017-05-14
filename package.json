@@ -1,0 +1,25 @@
+{
+  "name": "sql-schema-reader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/he3/SqlSchemaReader.git"
+  },
+  "author": "Henry",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/he3/SqlSchemaReader/issues"
+  },
+  "homepage": "https://github.com/he3/SqlSchemaReader#readme",
+  "dependencies": {
+    "tedious": "2.0.0"
+  }
+}

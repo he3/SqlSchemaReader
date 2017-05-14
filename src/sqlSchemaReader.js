@@ -3,7 +3,7 @@
  * @param {string} tablename - The name of the table in the database.
  */
 async function getTable(tableName) {
-    return "Schema of " + tableName;
+    
 }
 
 

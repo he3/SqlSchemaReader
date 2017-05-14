@@ -1,5 +1,6 @@
 
-const dbSchema = require("../src/sqlSchemaReader.js")
+const config = require("../config.json")
+const dbTables = require("../src/tablesReader.js")
 
 
 
@@ -19,5 +20,10 @@ async function run(){
 }
 
 async function getTableSchema(tableName){
-    return await dbSchema.getTable(tableName);
+    return await dbTables.names({
+        server:config.server,
+        database:"stinv",
+        username:config.username,
+        password:config.password
+    });
 }
