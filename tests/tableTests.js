@@ -2,10 +2,6 @@
 const config = require("../src/configReader.js")
 const dbTables = require("../src/tablesReader.js")
 
-
-
-
-
 // Show table details in console.
 
 run();

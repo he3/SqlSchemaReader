@@ -44,9 +44,11 @@ module.exports.names = function (config) {
               from	 information_schema.tables(nolock)
               where	  table_type='BASE TABLE'`;
 
-    var rows = [];
+   
 
     return new Promise((res, rej) => {
+         var rows = [];
+
         dbUtils.executeSql(config, {
             sql: sql
         },
