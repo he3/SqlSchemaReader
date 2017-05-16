@@ -1,6 +1,6 @@
 {
   "name": "sql-schema-reader",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Read Sql Server database schema.",
   "repository": {
     "type": "git",
