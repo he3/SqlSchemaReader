@@ -1,149 +1,50 @@
 # SqlSchemaReader
+Read SQL Server schema information.
 
 ## Usage
-
-### Config File
-Copy config-example.json to c:\SqlSchemaReader\config.json.
-Update the file to your database connection settings.
-
-### Tables
 ```javascript
-const config = require("../src/configReader.js")
 const dbTables = require("../src/tablesReader.js")
-
-// Show table details in console.
-
-run();
-
-async function run(){
-    console.log("Starting");
-
-    const tableNames = await getTableNames("npdb");
-    console.log(tableNames);
-
-    const tableSchema = await getTableSchema("stinv", "ADM_Company_M");
-    console.log(tableSchema);
-
-    console.log("Finished");
-}
-
-async function getTableSchema(dbName, tableName){
-    return await dbTables.table(config.databases[dbName], tableName);
-}
-
-async function getTableNames(dbName){
-    return await dbTables.names(config.databases[dbName]);
-}
-```
-
-### Stored Procedures
-```javascript
-const config = require("../src/configReader.js")
 const dbProcs = require("../src/procsReader.js")
-
-// Show proc details in console.
-
-run();
-
-async function run(){
-    console.log("Starting");
-
-    const procNames = await getProcNames("npdb");
-    console.log(procNames);
-
-    const procSchema = await getProcSchema("npdb", "proc_get_order_shipping_location");
-    console.log(procSchema);
-
-    const procDefinition = await getProcDefinition("npdb", "proc_get_order_shipping_location");
-    console.log(procDefinition);
-
-    console.log("Finished");
-}
-
-async function getProcDefinition(dbName, procName){
-    return await dbProcs.definition(config.databases[dbName], procName);
-}
-
-async function getProcSchema(dbName, procName){
-    return await dbProcs.proc(config.databases[dbName], procName);
-}
-
-async function getProcNames(dbName){
-    return await dbProcs.names(config.databases[dbName]);
-}
-```
-
-### Table Value Functions
-```javascript
-const config = require("../src/configReader.js")
 const dbFuncs = require("../src/functionsReader.js")
-
-// Show function details in console.
-
-run();
-
-async function run(){
-    console.log("Starting");
-
-    const functionNames = await getFunctionNames("npdb");
-    console.log(functionNames);
-
-    const functionSchema = await getFunctionSchema("npdb", "fn_POR_get_price_group_item_usage");
-    console.log(functionSchema);
-
-    const functionDefinition = await getFunctionDefinition("npdb", "fn_POR_get_price_group_item_usage");
-    console.log(functionDefinition);
-
-    console.log("Finished");
-}
-
-async function getFunctionDefinition(dbName, functionName){
-    return await dbFuncs.definition(config.databases[dbName], functionName);
-}
-
-async function getFunctionSchema(dbName, functionName){
-    return await dbFuncs.function(config.databases[dbName], functionName);
-}
-
-async function getFunctionNames(dbName){
-    return await dbFuncs.names(config.databases[dbName]);
-}
-```
-
-### Scalar Functions
-
-``` javascript
-const config = require("../src/configReader.js")
 const dbScalars = require("../src/scalarsReader.js")
 
-// Show scalar details in console.
+const config = {
+    "server":"server",
+    "database": "dbName",
+    "username":"",
+    "password":""  
+};
 
-run();
+// Get all table names
+dbTables.names(config);
 
-async function run(){
-    console.log("Starting");
+// Get table schema info
+dbTables.table(config, "tableName");
 
-    const scalarNames = await getScalarNames("npdb");
-    console.log(scalarNames);
+// Get all stored procedure names
+dbProcs.names(config);
 
-    const scalarSchema = await getScalarSchema("npdb", "fn_CBR_credit_memo_processed_status");
-    console.log(scalarSchema);
+// Get stored procedure schema info
+dbProcs.proc(config, "procName");
 
-    const scalarDefinition = await getScalarDefinition("npdb", "fn_CBR_credit_memo_processed_status");
-    console.log(scalarDefinition);
+// Get stored procedure definition
+dbProcs.definition(config, "procName");
 
-    console.log("Finished");
-}
+// Get all table value function names
+dbFuncs.names(config);
 
-async function getScalarDefinition(dbName, scalarName){
-    return await dbScalars.definition(config.databases[dbName], scalarName);
-}
+// Get table value function schema info
+dbFuncs.function(config, "functionName");
 
-async function getScalarSchema(dbName, scalarName){
-    return await dbScalars.scalar(config.databases[dbName], scalarName);
-}
+// Get table value function definition
+dbFuncs.definition(config, "functionName");
 
-async function getScalarNames(dbName){
-    return await dbScalars.names(config.databases[dbName]);
-}
+// Get all scalar function names
+dbScalars.names(config);
+
+// Get scalar function schema info
+dbScalars.scalar(config, "scalarFunctionName");
+
+// Get scalar function definition
+dbScalars.definition(config, "scalarFunctionName");
 ```

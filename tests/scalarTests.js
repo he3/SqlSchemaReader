@@ -1,5 +1,5 @@
 
-const config = require("../src/configReader.js")
+const config = require("./configReader.js")
 const dbScalars = require("../src/scalarsReader.js")
 
 // Show scalar details in console.

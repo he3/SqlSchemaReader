@@ -1,5 +1,5 @@
 
-const config = require("../src/configReader.js")
+const config = require("./configReader.js")
 const dbProcs = require("../src/procsReader.js")
 
 // Show proc details in console.
