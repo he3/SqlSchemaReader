@@ -1,6 +1,11 @@
 # SqlSchemaReader
 Read SQL Server schema information. Uses Tedious.js.
 
+## install
+```
+npm install sql-schema-reader
+```
+
 ## Usage
 ```javascript
 const schemaReader = require("sql-schema-reader");
