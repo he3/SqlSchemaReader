@@ -1,12 +1,21 @@
-/**
- * Returns schema info for the given table name
- * @param {string} tablename - The name of the table in the database.
- */
-async function getTable(tableName) {
-    
-}
-
+const dbTables = require("./tablesReader.js")
+const dbProcs = require("./procsReader.js")
+const dbFuncs = require("./functionsReader.js")
+const dbScalars = require("./scalarsReader.js")
 
 module.exports = {
-    getTable
-}
+    tableNames: dbTables.names,
+    table: dbTables.table,
+    
+    functionNames: dbFuncs.names,
+    function: dbFuncs.function,
+    functionDefinition: dbFuncs.definition,
+
+    scalarNames: dbScalars.names,
+    scalar: dbScalars.scalar,
+    scalarDefinition: dbScalars.definition,
+
+    procNames: dbProcs.names,
+    proc: dbProcs.proc,
+    procDefinition: dbProcs.definition
+};

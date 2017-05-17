@@ -1,50 +1,58 @@
 # SqlSchemaReader
-Read SQL Server schema information.
+Read SQL Server schema information. Uses Tedious.js.
 
 ## Usage
 ```javascript
-const dbTables = require("../src/tablesReader.js")
-const dbProcs = require("../src/procsReader.js")
-const dbFuncs = require("../src/functionsReader.js")
-const dbScalars = require("../src/scalarsReader.js")
+const schemaReader = require("sql-schema-reader");
 
-const config = {
-    "server":"server",
-    "database": "dbName",
-    "username":"",
-    "password":""  
-};
+async function go(){
+    const config = {
+        "server":"server",
+        "database": "dbName",
+        "username":"",
+        "password":""  
+    };
 
-// Get all table names
-dbTables.names(config);
+    // Tables
+    const tableNames = await schemaReader.tableNames(config);
+    console.log(tableNames);
 
-// Get table schema info
-dbTables.table(config, "tableName");
+    const table = await schemaReader.table(config, "tableName");
+    console.log(table);
 
-// Get all stored procedure names
-dbProcs.names(config);
 
-// Get stored procedure schema info
-dbProcs.proc(config, "procName");
+    // Stored Procedures
+    const procNames = await schemaReader.procNames(config);
+    console.log(procNames);
 
-// Get stored procedure definition
-dbProcs.definition(config, "procName");
+    const proc = await schemaReader.proc(config, "procName");
+    console.log(proc);
 
-// Get all table value function names
-dbFuncs.names(config);
+    const procDefinition = await schemaReader.procDefinition(config, "procName");
+    console.log(procDefinition);
 
-// Get table value function schema info
-dbFuncs.function(config, "functionName");
 
-// Get table value function definition
-dbFuncs.definition(config, "functionName");
+    // Table Value Functions
+    const functionNames = await schemaReader.functionNames(config);
+    console.log(functionNames);
 
-// Get all scalar function names
-dbScalars.names(config);
+    const func = await schemaReader.function(config, "functionName");
+    console.log(func);
 
-// Get scalar function schema info
-dbScalars.scalar(config, "scalarFunctionName");
+    const functionDefinition = await schemaReader.functionDefinition(config, "functionName");
+    console.log(functionDefinition);
 
-// Get scalar function definition
-dbScalars.definition(config, "scalarFunctionName");
+
+    // Scalar Functions
+    const scalarNames = await schemaReader.scalarNames(config);
+    console.log(scalarNames);
+
+    const scalar = await schemaReader.scalar(config, "scalarName");
+    console.log(scalar);
+
+    const scalarDefinition = await schemaReader.scalarDefinition(config, "scalarName");
+    console.log(scalarDefinition);
+}
+
+go();
 ```

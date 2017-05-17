@@ -32,7 +32,10 @@ var emptyTable = cols => {
 const emptyTables = dbRows => { return dbRows.map(emptyTable); };
 
 
-
+/**
+ * @param {config} config - The connection config.
+ * @param {string} config.database - The name of the database to connect to.
+ */
 module.exports.names = function (config) {
     var resultMessage = {
         success: false,
