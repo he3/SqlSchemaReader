@@ -2,7 +2,7 @@
   "name": "sql-schema-reader",
   "version": "2.0.0",
   "description": "Read Sql Server database schema.",
-  "main": "./src/sqlSchemaReader.js",
+  "main": "./src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/he3/SqlSchemaReader.git"
