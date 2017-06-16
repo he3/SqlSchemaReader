@@ -69,7 +69,6 @@ function names(config) {
 };
 
 function tableInfos(config, tableNames) {
-
     var sql = `SELECT  
         [Extent1].[SchemaName],
         [Extent1].[Name] AS TableName,
@@ -516,17 +515,17 @@ async function tables(config, tableNames) {
     let [t, fk] = await Promise.all([
         tableInfos(config, tableNames), 
         fkInfos(config, tableNames)
-    ]);
+    ]);    
     return processFks(t, fk);
 }
 
 
 
 async function table(config, tableName) {
-    const tables = await tables(config, [tableName]);
-    if (tables.length == 0)
+    const _tables = await tables(config, [tableName]);
+    if (_tables.length == 0)
         throw(`Table "${tableName}" does not exist`);
-    return tables[0];
+    return _tables[0];
 };
 
 

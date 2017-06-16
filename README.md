@@ -73,3 +73,250 @@ async function go(){
 
 go();
 ```
+
+##Outputs
+```javascript
+// tableNames
+[ 
+    { 
+        "database": "dbName", 
+        "schema": "dbo", 
+        "name": "tableName" 
+    }
+]
+
+// table
+{
+    "database": "dbName",
+    "schema": "dbo",
+    "name": "tableName",
+    "tableType": "BASE TABLE",
+    "columns": [
+        {
+            "ordinal": 1,
+            "columnName": "columnName",
+            "isNullable": false,
+            "typeName": "nvarchar",
+            "maxLength": 8,
+            "precision": 0,
+            "default": "",
+            "dateTimePrecision": 0,
+            "scale": 0,
+            "isIdentity": false,
+            "isStoreGenerated": false,
+            "primaryKey": true
+        }
+    ],
+    "primaryKeys": [
+        {
+            "ordinal": 1,
+            "columnName": "columnName",
+            "isNullable": false,
+            "typeName": "nvarchar",
+            "maxLength": 8,
+            "precision": 0,
+            "default": "",
+            "dateTimePrecision": 0,
+            "scale": 0,
+            "isIdentity": false,
+            "isStoreGenerated": false,
+            "primaryKey": true
+        }
+    ],
+    "foreignKeys": [
+        {
+            "pkTableName": "tableName2",
+            "constraintName": "FK_tableName_tableName2",
+            "columns": [
+                {
+                    "fkColumn": {
+                        "ordinal": 1,
+                        "columnName": "columnName",
+                        "isNullable": false,
+                        "typeName": "nvarchar",
+                        "maxLength": 64,
+                        "precision": 0,
+                        "default": "",
+                        "dateTimePrecision": 0,
+                        "scale": 0,
+                        "isIdentity": false,
+                        "isStoreGenerated": false,
+                        "primaryKey": false
+                    },
+                    "pkColumn": {
+                        "ordinal": 1,
+                        "columnName": "columnName",
+                        "isNullable": false,
+                        "typeName": "nvarchar",
+                        "maxLength": 64,
+                        "precision": 0,
+                        "default": "",
+                        "dateTimePrecision": 0,
+                        "scale": 0,
+                        "isIdentity": false,
+                        "isStoreGenerated": false,
+                        "primaryKey": true
+                    },
+                    "ordinal": 1
+                }
+            ],
+            "relationship": "manyToOne"
+        }
+    ],
+    "reverseNavigations": [
+        {
+            "fkTableName": "tableName3",
+            "constraintName": "FK_tableName3_tableName",
+            "columns": [
+                {
+                    "fkColumn": {
+                        "ordinal": 1,
+                        "columnName": "columnName",
+                        "isNullable": false,
+                        "typeName": "nvarchar",
+                        "maxLength": 64,
+                        "precision": 0,
+                        "default": "",
+                        "dateTimePrecision": 0,
+                        "scale": 0,
+                        "isIdentity": false,
+                        "isStoreGenerated": false,
+                        "primaryKey": false
+                    },
+                        "pkColumn": {
+                        "ordinal": 1,
+                        "columnName": "columnName",
+                        "isNullable": false,
+                        "typeName": "nvarchar",
+                        "maxLength": 64,
+                        "precision": 0,
+                        "default": "",
+                        "dateTimePrecision": 0,
+                        "scale": 0,
+                        "isIdentity": false,
+                        "isStoreGenerated": false,
+                        "primaryKey": true
+                    },
+                    "ordinal": 1
+                }
+            ],
+            "relationship": "manyToOne"
+        }
+    ]
+}
+
+// tables: Array of Tables
+
+// tableValueFunctionNames
+[ 
+    { 
+        "database": "dbName",
+        "schema": "dbo",
+        "name": "tvFunctionName" 
+    }
+]
+
+// tableValueFunction
+{
+    "database": "dbName",
+    "schema": "dbo",
+    "name": "tvFunctionName",
+    "parameters": [
+        {
+            "ordinal": 1,
+            "parameterMode": "IN",
+            "parameterName": "@parmName",
+            "dataType": "nchar",
+            "maxLength": 2,
+            "precision": 0,
+            "scale": 0,
+            "datetimePrecision": 0
+        }
+    ],
+    "returnColumns": [
+        {
+            "name": "colName1",
+            "dataType": "int"
+        },
+        {
+            "name": "colName2",
+            "dataType": "nvarchar",
+            "maxLength": 4000
+        }
+    ]
+}
+
+ // tableValueFunctions: Array of table value functions
+
+ // storedProcedureNames
+ [ 
+    { 
+        "database": "dbName",
+        "schema": "dbo",
+        "name": "storedProcedureName" 
+    }
+]
+
+// storedProcedure
+{
+    "database": "dbName",
+    "schema": "dbo",
+    "name": "storedProcedureName",
+    "parameters": [
+        {
+            "ordinal": 1,
+            "parameterMode": "IN",
+            "parameterName": "@parmName",
+            "dataType": "nchar",
+            "maxLength": 2,
+            "precision": 0,
+            "scale": 0,
+            "datetimePrecision": 0
+        }
+    ],
+    "returnColumns": [
+        {
+            "name": "colName1",
+            "dataType": "int"
+        },
+        {
+            "name": "colName2",
+            "dataType": "nvarchar",
+            "maxLength": 4000
+        }
+    ]
+}
+
+// storedProcedures: Array of stored procedures
+
+// scalarFunctionNames
+ [ 
+    { 
+        "database": "dbName",
+        "schema": "dbo",
+        "name": "scalarFunctionName" 
+    }
+]
+
+// scalarFunction
+{
+    "database": "dbName",
+    "schema": "dbo",
+    "name": "scalarFunctionName",
+    "parameters": [
+        {
+            "ordinal": 1,
+            "parameterMode": "IN",
+            "parameterName": "@parmName",
+            "dataType": "nchar",
+            "maxLength": 2,
+            "precision": 0,
+            "scale": 0,
+            "datetimePrecision": 0
+        }
+    ],
+    "returnDataType": "varchar"
+}
+
+// scalarFunctions: Array of scalar functions
+```

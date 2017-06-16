@@ -89,6 +89,13 @@ function createParameters(name, parmRows) {
     }));
 }
 
+function formatReturnColType(dbValue){
+    let val = dbValue.toLowerCase();
+    if(val.endsWith("n"))
+        val = val.slice(0, -1);
+    return val;
+}
+
 async function createReturnColumns(config, name, parmRows, funcType) {
     let sql = "";
     if (funcType === "tvf") {
@@ -107,7 +114,7 @@ async function createReturnColumns(config, name, parmRows, funcType) {
             cols => {
                 colInfos = cols.map(c => ({
                     name: c.colName,
-                    dataType: c.type.name,
+                    dataType: formatReturnColType(c.type.name),
                     maxLength: c.type.maximumLength
                 }));
             },
