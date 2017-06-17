@@ -1,6 +1,6 @@
 {
   "name": "sql-schema-reader",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "Read Sql Server database schema.",
   "main": "./src/index.js",
   "repository": {
