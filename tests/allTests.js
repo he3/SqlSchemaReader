@@ -4,18 +4,18 @@ const schemaReader = require("../src/index.js");
 go();
 
 async function go() {
-    const config = configReader.databases["npdb"];
+    const config = configReader.databases["stinv"];
 
     // const tableNames = await schemaReader.tableNames(config);
     // console.log(tableNames);
-    // const tableResult = await schemaReader.table(config, "ADM_OPCTagType_M");
+    // const tableResult = await schemaReader.table(config, "AGV_Priority_M");
     // console.log(JSON.stringify(tableResult, null, " "));
-    // const tablesResult = await schemaReader.tables(config, [
-    //     "ADM_ProductionLineProduct_R", 
-    //     "ADM_ProductionLine_M"
-    // ]);
-    // console.log(tablesResult);
-    // console.log(JSON.stringify(tablesResult, null, " "));
+    const tablesResult = await schemaReader.tables(config, [
+        "ADM_ProductionLineProduct_R", 
+        "ADM_ProductionLine_M",
+        "AGV_Priority_M"
+    ]);
+    console.log(JSON.stringify(tablesResult, null, " "));
 
     // const funcNames = await schemaReader.tableValueFunctionNames(config);
     // console.log(funcNames);

@@ -2,6 +2,9 @@ var utils = require('./utils.js');
 var dbUtils = require('./dbUtils.js');
 var TYPES = dbUtils.TYPES;
 
+const fixedLengthTypes = ["char", "nchar"];
+const precisionAndScaleTypes = ["money", "decimal"];
+
 function column(cols) {
     return {
         ordinal: cols[3].value,
@@ -15,7 +18,10 @@ function column(cols) {
         scale: cols[11].value,
         isIdentity: cols[12].value,
         isStoreGenerated: cols[13].value,
-        primaryKey: cols[14].value
+        primaryKey: cols[14].value,
+        isFixedLength: fixedLengthTypes.includes(cols[6].value.toLowerCase()),
+        hasPrecisionAndScale: precisionAndScaleTypes.includes(cols[6].value.toLowerCase()),
+        isRowVersion: cols[6].value.toLowerCase() === "timestamp"
     };
 }
 
@@ -513,9 +519,9 @@ function processFks(tableInfos, fkInfos) {
 
 async function tables(config, tableNames) {
     let [t, fk] = await Promise.all([
-        tableInfos(config, tableNames), 
+        tableInfos(config, tableNames),
         fkInfos(config, tableNames)
-    ]);    
+    ]);
     return processFks(t, fk);
 }
 
@@ -524,7 +530,7 @@ async function tables(config, tableNames) {
 async function table(config, tableName) {
     const _tables = await tables(config, [tableName]);
     if (_tables.length == 0)
-        throw(`Table "${tableName}" does not exist`);
+        throw (`Table "${tableName}" does not exist`);
     return _tables[0];
 };
 

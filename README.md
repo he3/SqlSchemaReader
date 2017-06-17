@@ -104,7 +104,10 @@ go();
             "scale": 0,
             "isIdentity": false,
             "isStoreGenerated": false,
-            "primaryKey": true
+            "primaryKey": true,
+            "isFixedLength": false,
+            "hasPrecisionAndScale": false,
+            "isRowVersion": false
         }
     ],
     "primaryKeys": [
@@ -120,7 +123,10 @@ go();
             "scale": 0,
             "isIdentity": false,
             "isStoreGenerated": false,
-            "primaryKey": true
+            "primaryKey": true,
+            "isFixedLength": false,
+            "hasPrecisionAndScale": false,
+            "isRowVersion": false
         }
     ],
     "foreignKeys": [
@@ -141,7 +147,10 @@ go();
                         "scale": 0,
                         "isIdentity": false,
                         "isStoreGenerated": false,
-                        "primaryKey": false
+                        "primaryKey": false,
+                        "isFixedLength": false,
+                        "hasPrecisionAndScale": false,
+                        "isRowVersion": false
                     },
                     "pkColumn": {
                         "ordinal": 1,
@@ -155,7 +164,10 @@ go();
                         "scale": 0,
                         "isIdentity": false,
                         "isStoreGenerated": false,
-                        "primaryKey": true
+                        "primaryKey": true,
+                        "isFixedLength": false,
+                        "hasPrecisionAndScale": false,
+                        "isRowVersion": false
                     },
                     "ordinal": 1
                 }
@@ -181,7 +193,10 @@ go();
                         "scale": 0,
                         "isIdentity": false,
                         "isStoreGenerated": false,
-                        "primaryKey": false
+                        "primaryKey": false,
+                        "isFixedLength": false,
+                        "hasPrecisionAndScale": false,
+                        "isRowVersion": false
                     },
                         "pkColumn": {
                         "ordinal": 1,
@@ -195,7 +210,10 @@ go();
                         "scale": 0,
                         "isIdentity": false,
                         "isStoreGenerated": false,
-                        "primaryKey": true
+                        "primaryKey": true,
+                        "isFixedLength": false,
+                        "hasPrecisionAndScale": false,
+                        "isRowVersion": false
                     },
                     "ordinal": 1
                 }
