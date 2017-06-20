@@ -122,7 +122,10 @@ async function createReturnColumns(config, name, parmRows, funcType) {
                 res(colInfos);
             },
             error => {
-                rej(error);
+                rej({
+                    name,
+                    error
+                });
             });
     });
 }

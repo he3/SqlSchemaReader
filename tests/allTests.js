@@ -10,12 +10,12 @@ async function go() {
     // console.log(tableNames);
     // const tableResult = await schemaReader.table(config, "AGV_Priority_M");
     // console.log(JSON.stringify(tableResult, null, " "));
-    const tablesResult = await schemaReader.tables(config, [
-        "ADM_ProductionLineProduct_R", 
-        "ADM_ProductionLine_M",
-        "AGV_Priority_M"
-    ]);
-    console.log(JSON.stringify(tablesResult, null, " "));
+    // const tablesResult = await schemaReader.tables(config, [
+    //     "ADM_ProductionLineProduct_R", 
+    //     "ADM_ProductionLine_M",
+    //     "AGV_Priority_M"
+    // ]);
+    // console.log(JSON.stringify(tablesResult, null, " "));
 
     // const funcNames = await schemaReader.tableValueFunctionNames(config);
     // console.log(funcNames);
