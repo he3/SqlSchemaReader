@@ -74,7 +74,7 @@ async function go(){
 go();
 ```
 
-##Outputs
+## Outputs
 ```javascript
 // tableNames
 [ 
@@ -339,9 +339,12 @@ go();
 // scalarFunctions: Array of scalar functions
 ```
 
-##Schema Read Error
-Sometimes a database object cannot be read correctly. 
-When this happens the return object will have a schemaReadError
+## Schema Read Error
+Sometimes the metadata of return columns for stored procedures cannot be read.
+The output will have a schemaReadError when this happens.
+Known causes:
+- When a stored procedure uses a #TempTable, the return columns cannot be read.
+- When a stored procedure is invalid, for example a table does not exist.
 ```javascript
 {
     "database": "dbName",
