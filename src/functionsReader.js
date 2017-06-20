@@ -105,7 +105,7 @@ async function createReturnColumns(config, name, parmRows, funcType) {
         const parms = parmRows.map(r => `${r.parameterName}=null`).join(",");
         sql = `execute ${name} ${parms};`;
     }
-
+    
     return new Promise((res, rej) => {
         let colInfos = [];
         dbUtils.executeSqlFmtOnly(
@@ -147,14 +147,22 @@ async function createFunction(config, name, allRows, funcType) {
         };
     } else {
         // table value function, stored proc
-        const returnColumns = await createReturnColumns(config, name, parmRows, funcType);
-        return {
+        let retValue = {
             database: config.database,
             schema: funcRows[0].schema,
             name,
-            parameters,
-            returnColumns
+            parameters
         };
+        try {
+            retValue.returnColumns = await createReturnColumns(config, name, parmRows, funcType);
+        } catch (error) {
+            retValue.schemaReadError = {
+                message: "Failed to read return columns.",
+                error
+            };
+        }
+        
+        return retValue;
     }
 }
 

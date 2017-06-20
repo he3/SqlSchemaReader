@@ -27,8 +27,13 @@ async function go() {
     // const procNames = await schemaReader.storedProcedureNames(config);
     // console.log(procNames);
     // stinv.proc_DEV_ttp_create_cartons, npdb.proc_dev_test_he3
-    // const procResult = await schemaReader.storedProcedure(config, "proc_IMO_get_editable_orders");
-    // console.log(JSON.stringify(procResult, null, " ")); 
+    // try {
+    //     const procResult = await schemaReader.storedProcedure(config, "proc_INV_StorageLocationType_M_create_from_instance");
+    //     console.log(JSON.stringify(procResult, null, " "));
+    // } catch (error) {
+    //     console.log(error)
+    // }
+
     // const procsResult = await schemaReader.storedProcedures(config, ["proc_DEV_ttp_create_cartons", "proc_WIP_delete_message_subscriptions_for_user"]);
     // console.log(JSON.stringify(procsResult, null, " ")); 
 

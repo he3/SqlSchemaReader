@@ -338,3 +338,19 @@ go();
 
 // scalarFunctions: Array of scalar functions
 ```
+
+##Schema Read Error
+Sometimes a database object cannot be read correctly. 
+When this happens the return object will have a schemaReadError
+```javascript
+{
+    "database": "dbName",
+    "schema": "dbo",
+    "name": "storedProcedureName",
+    "parameters": [],
+    "schemaReadError" = {
+        message: "SQL Schema Reader error message.",
+        error: originalErrorResponse
+    }
+}
+```

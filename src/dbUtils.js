@@ -24,14 +24,14 @@ exports.executeSql = function (config, command, rowCallback, requestCallback, er
 	connection.on('connect', function (err) {
 		if (err) {
 			errorCallback(err.name + ': ' + err.message + '\r\n[' + err.code + ']');
-			console.error('Connect Failed. Error:', err);
+			//console.error('Connect Failed. Error:', err);
 			return;
 		}
 
 		var req = new Request(command.sql, function (err, rowCount) {
 			if (err) {
 				errorCallback(err);
-				console.log('Request Failed:' + err);
+				//console.log('Request Failed:' + err);
 			} else {
 				requestCallback(rowCount);
 			}
@@ -71,7 +71,7 @@ exports.executeSqlFmtOnly = function (config, command, columnMetadataCallback, r
 		let _rowCount = 0;
 		if (err) {
 			errorCallback(err.name + ': ' + err.message + '\r\n[' + err.code + ']');
-			console.error('Connect Failed. Error:', err);
+			//console.error('Connect Failed. Error:', err);
 			return;
 		}
 
@@ -80,7 +80,7 @@ exports.executeSqlFmtOnly = function (config, command, columnMetadataCallback, r
 			function (err, rowCount) {
 				if (err) {
 					errorCallback(err);
-					console.log('Request Failed:' + err);
+					//console.log('Request Failed:' + err);
 				} else {
 					_rowCount = rowCount;
 					requestCallback(_rowCount);
